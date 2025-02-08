@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+
 const newMessage = {
     message: "Hector",
     title: "Hola",
@@ -12,8 +15,11 @@ const getSum = (a, b) => {
     return a + b;
 }
 
-export const FirstApp = ({title, subTitle = 0}) => { // Functional component
-    console.log(title);
+export const FirstApp = ({title, subTitle}) => { // Functional component
+    useEffect(() => { // Necesary if want to use legacy  > react 18 proptypes
+        PropTypes.checkPropTypes(FirstApp.propTypes, { title, subTitle }, 'prop', 'FirstApp');
+    }, [title, subTitle]);
+
   return (
     <> {/* Or we can use FRAGMENT of React */}
         <h1>-{ title } ({subTitle+1})</h1>
@@ -23,3 +29,15 @@ export const FirstApp = ({title, subTitle = 0}) => { // Functional component
     </>
   )
 }
+
+FirstApp.propTypes = {
+    title: PropTypes.string.isRequired,
+    subTitle: PropTypes.number,
+};
+
+/* 
+    // LEGACY
+    FirstApp.defaultProps = {
+    title: "No hay titulo"
+    }
+*/
