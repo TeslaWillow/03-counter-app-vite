@@ -8,6 +8,9 @@ import { useEffect, useState } from "react";
  *  */ // Dont asign more space in memory if this is outside of func component.
 
 export const CounterApp = ({value}) => {
+
+    console.log("IM RENDER!");
+
     useEffect(() => { // Necesary if want to use legacy  > react 18 proptypes
         PropTypes.checkPropTypes(CounterApp.propTypes, { value }, 'prop', 'FirstApp');
     }, [value]);
@@ -21,12 +24,18 @@ export const CounterApp = ({value}) => {
         // setCounter((c) => c + 1);
     } // state updated ultil function ends
 
+    const handleSubstract = () => setCounter((c) => c - 1);
+
+    const resetCounter = () => setCounter(value);
+
     return (
         <>
          <h1>CounterApp</h1>
          <h2> { counter } </h2>
 
          <button onClick={handleAdd} >+1</button>
+         <button onClick={handleSubstract}>-1</button>
+         <button onClick={resetCounter}>Reset</button>
         </>
     )
   }
