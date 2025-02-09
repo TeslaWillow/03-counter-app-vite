@@ -22,7 +22,7 @@ export const FirstApp = ({title, subTitle}) => { // Functional component
 
   return (
     <> {/* Or we can use FRAGMENT of React */}
-        <h3 data-testid="test-title">{ title } </h3>
+        <h1 data-testid="test-title">{ title } </h1>
         <h2>{ getMessage() } ({getSum(2,3)})</h2>
         <code>{ JSON.stringify(newMessage) }</code> {/* Could not be an object */}
         <p>{subTitle}</p>
